@@ -42,7 +42,7 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: dev
-      url: https://github.com/<owner>/<username>-tutorial-backend/security/code-scanning
+      url: https://github.com/eakkaraw/eakkaraw-tutorial-backend/security/code-scanning
     permissions:
       actions: read
       contents: read
@@ -64,6 +64,7 @@ jobs:
        
     - name: Autobuild
       uses: github/codeql-action/autobuild@v2
+
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v2
@@ -90,6 +91,6 @@ jobs:
       uses: peter-evans/repository-dispatch@v1
       with:
         token: ${{ secrets.WORKFLOW_TOKEN }}
-        repository: <owner>/<username>-pipeline
-        event-type: <username>-tutorial-be-cd-dev
+        repository: eakkaraw/eakkaraw-pipeline
+        event-type: eakkaraw-tutorial-be-cd-dev
         client-payload: '{"ref": "${{ github.ref }}", "sha": "${{ github.sha }}"}'
